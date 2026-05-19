@@ -22,6 +22,7 @@ import {
   type HistoryRecordTuple,
   type RawHeroTuple,
 } from "@/lib/contract";
+import { BUILDER_CODE_SUFFIX } from "@/lib/wagmi";
 
 type View = "profile" | "adventure" | "log" | "leaderboard" | "rewards" | "invite" | "missions";
 type RunKind = "daily" | "explore";
@@ -273,6 +274,7 @@ export default function Home() {
       abi: GAS_HERO_ABI,
       functionName: kind === "daily" ? "dailyAdventure" : "exploreWorld",
       chainId: base.id,
+      dataSuffix: BUILDER_CODE_SUFFIX,
     });
     setTxHash(hash);
   }
